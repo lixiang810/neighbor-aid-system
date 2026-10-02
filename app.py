@@ -338,4 +338,7 @@ if __name__ == "__main__":
         local_ip = "本机局域网IP"
     print("邻里智助运行中: http://127.0.0.1:5173")
     print(f"同一 Wi-Fi 下的手机/电脑请访问: http://{local_ip}:5173")
-    ThreadingHTTPServer(("0.0.0.0",5173), Handler).serve_forever()
+    import os
+
+PORT = int(os.environ.get("PORT", "5173"))
+ThreadingHTTPServer(("0.0.0.0", PORT), Handler).serve_forever()
